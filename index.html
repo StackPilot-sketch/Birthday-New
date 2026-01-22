@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love 💖</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', 'Arial Rounded MT Bold', 'Brush Script MT', cursive, sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 30%, #a1c4fd 100%);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #5a2d5c;
+}
+
+/* Background animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* SCREEN 1 - WELCOME */
+#screen1 {
+  max-width: 800px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  animation: gentleFloat 6s ease-in-out infinite;
+  z-index: 100;
+  position: relative;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+#screen1 h1 {
+  font-size: 4rem;
+  background: linear-gradient(45deg, #ff4f8b, #ffb199, #7b68ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+#screen1 p {
+  font-size: 1.6rem;
+  margin: 25px 0;
+  line-height: 1.7;
+  color: #5a2d5c;
+}
+
+/* Button styles */
+.button-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 30px;
+}
+
+button {
+  padding: 20px 60px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 60px;
+  background: linear-gradient(to right, #ff4f8b, #ff7eb3, #ff4f8b);
+  background-size: 200% 100%;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(255, 79, 139, 0.4);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(255, 79, 139, 0.6);
+  background-position: 100% 0;
+  animation: buttonShimmer 2s infinite;
+}
+
+@keyframes buttonShimmer {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+button:active {
+  transform: translateY(0) scale(1);
+}
+
+/* SCREEN 2 - MESSAGE SCREEN */
+#screen2 {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+/* Message container */
+.message-container {
+  max-width: 850px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  z-index: 60;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.message-container:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffdde1, #a1c4fd, #ff9a9e);
+  background-size: 400% 400%;
+  z-index: -1;
+  border-radius: 35px;
+  animation: rotateGradient 15s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes rotateGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+/* Message lines */
+.line {
+  font-size: 2.4rem;
+  margin: 30px 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  line-height: 1.6;
+  position: relative;
+}
+
+.line.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#line1 {
+  color: #ff4f8b;
+  border-left: 8px solid #ff4f8b;
+}
+
+#line2 {
+  color: #7b68ee;
+  border-left: 8px solid #7b68ee;
+}
+
+#line3 {
+  color: #ff7eb3;
+  border-left: 8px solid #ff7eb3;
+}
+
+/* Final love message */
+#finalLove {
+  font-size: 4rem;
+  margin-top: 50px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.5);
+  background: linear-gradient(45deg, #ff4f8b, #ff7eb3, #ff4f8b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  text-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+#finalLove.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* DANCING SILHOUETTE - Custom SVG Style */
+.silhouette-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.dancing-silhouette {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3Cfilter id='shadow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur in='SourceAlpha' stdDeviation='15'/%3E%3CfeOffset dx='0' dy='0' result='offsetblur'/%3E%3CfeFlood flood-color='rgba(0,0,0,0.3)'/%3E%3CfeComposite in2='offsetblur' operator='in'/%3E%3CfeMerge%3E%3CfeMergeNode/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23shadow)'%3E%3Cpath fill='%23000000' d='M120,280 C100,260 90,240 100,220 C110,200 130,190 150,200 L160,210 C170,220 180,230 190,240 C200,250 210,260 220,270 C230,280 240,290 250,300 C260,310 270,320 280,310 C290,300 300,280 310,270 L320,260 C330,250 340,240 350,230 C360,220 370,210 380,200 C390,190 400,180 390,170 C380,160 370,150 360,140 C350,130 340,120 330,110 C320,100 310,90 300,80 C290,70 280,60 270,50 C260,40 250,30 240,20 C230,10 220,0 210,10 C200,20 190,30 180,40 C170,50 160,60 150,70 C140,80 130,90 120,100 C110,110 100,120 90,130 C80,140 70,150 60,160 C50,170 40,180 30,190 C20,200 10,210 0,220 C10,230 20,240 30,250 C40,260 50,270 60,280 C70,290 80,300 90,310 C100,320 110,330 120,340 C130,350 140,360 150,370 C160,380 170,390 180,400 C190,390 200,380 210,370 C220,360 230,350 240,340 C250,330 260,320 270,310 C280,300 290,290 300,280 C310,270 320,260 330,250 C340,240 350,230 360,220 C370,210 380,200 390,190 C400,180 390,170 380,160 C370,150 360,140 350,130 C340,120 330,110 320,100 C310,90 300,80 290,70 C280,60 270,50 260,40 C250,30 240,20 230,10 C220,0 210,10 200,20 C190,30 180,40 170,50 C160,60 150,70 140,80 C130,90 120,100 110,110 C100,120 90,130 80,140 C70,150 60,160 50,170 C40,180 30,190 20,200 C10,210 0,220 10,230 C20,240 30,250 40,260 C50,270 60,280 70,290 C80,300 90,310 100,320 C110,330 120,340 130,350 C140,360 150,370 160,380 C170,390 180,400 190,390 C200,380 210,370 220,360 C230,350 240,340 250,330 C260,320 270,310 280,300 C290,290 300,280 310,270 C320,260 330,250 340,240 C350,230 360,220 370,210 C380,200 390,190 400,180 C390,170 380,160 370,150 C360,140 350,130 340,120 C330,110 320,100 310,90 C300,80 290,70 280,60 C270,50 260,40 250,30 C240,20 230,10 220,0 C210,10 200,20 190,30 C180,40 170,50 160,60 C150,70 140,80 130,90 C120,100 110,110 100,120 C90,130 80,140 70,150 C60,160 50,170 40,180 C30,190 20,200 10,210 C0,220 10,230 20,240 C30,250 40,260 50,270 C60,280 70,290 80,300 C90,310 100,320 110,330 C120,340 130,350 140,360 C150,370 160,380 170,390 C180,400 190,390 200,380 C210,370 220,360 230,350 C240,340 250,330 260,320 C270,310 280,300 290,290 C300,280 310,270 320,260 C330,250 340,240 350,230 C360,220 370,210 380,200 C390,190 400,180 390,170 C380,160 370,150 360,140 C350,130 340,120 330,110 C320,100 310,90 300,80 C290,70 280,60 270,50 C260,40 250,30 240,20 C230,10 220,0 210,10 C200,20 190,30 180,40 C170,50 160,60 150,70 C140,80 130,90 120,100 C110,110 100,120 90,130 C80,140 70,150 60,160 C50,170 40,180 30,190 C20,200 10,210 0,220 C10,230 20,240 30,250 C40,260 50,270 60,280 C70,290 80,300 90,310 C100,320 110,330 120,340 C130,350 140,360 150,370 C160,380 170,390 180,400 C190,390 200,380 210,370 C220,360 230,350 240,340 C250,330 260,320 270,310 C280,300 290,290 300,280 C310,270 320,260 330,250 C340,240 350,230 360,220 C370,210 380,200 390,190 C400,180 390,170 380,160 C370,150 360,140 350,130 C340,120 330,110 320,100 C310,90 300,80 290,70 C280,60 270,50 260,40 C250,30 240,20 230,10 C220,0 210,10 200,20 C190,30 180,40 170,50 C160,60 150,70 140,80 C130,90 120,100 110,110 C100,120 90,130 80,140 C70,150 60,160 50,170 C40,180 30,190 20,200 C10,210 0,220 10,230 C20,240 30,250 40,260 C50,270 60,280 70,290 C80,300 90,310 100,320 C110,330 120,340 130,350 C140,360 150,370 160,380 C170,390 180,400 190,390 C200,380 210,370 220,360 C230,350 240,340 250,330 C260,320 270,310 280,300 C290,290 300,280 310,270 C320,260 330,250 340,240 C350,230 360,220 370,210 C380,200 390,190 400,180 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  animation: silhouetteDance 25s ease-in-out infinite;
+}
+
+/* Multiple dance animations for variety */
+@keyframes silhouetteDance {
+  0% {
+    opacity: 0;
+    transform: translate(-400px, 300px) scale(0.6) rotate(0deg);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  20% {
+    transform: translate(15vw, 10vh) scale(0.8) rotate(10deg);
+  }
+  35% {
+    transform: translate(40vw, -20vh) scale(1) rotate(20deg);
+  }
+  50% {
+    transform: translate(70vw, 30vh) scale(0.9) rotate(0deg);
+  }
+  65% {
+    transform: translate(50vw, -40vh) scale(1.1) rotate(-15deg);
+  }
+  80% {
+    transform: translate(20vw, 50vh) scale(0.8) rotate(10deg);
+  }
+  95% {
+    opacity: 0.8;
+    transform: translate(90vw, -30vh) scale(0.7) rotate(-5deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(110vw, 100px) scale(0.6) rotate(0deg);
+  }
+}
+
+@keyframes silhouetteDance2 {
+  0% {
+    opacity: 0;
+    transform: translate(100vw, -100px) scale(0.5) rotate(10deg);
+  }
+  15% {
+    opacity: 0.7;
+    transform: translate(80vw, 40vh) scale(0.9) rotate(20deg);
+  }
+  30% {
+    transform: translate(60vw, -20vh) scale(1) rotate(0deg);
+  }
+  45% {
+    transform: translate(40vw, 60vh) scale(0.8) rotate(-15deg);
+  }
+  60% {
+    transform: translate(20vw, 10vh) scale(1.1) rotate(10deg);
+  }
+  75% {
+    transform: translate(70vw, 30vh) scale(0.7) rotate(-10deg);
+  }
+  90% {
+    opacity: 0.7;
+    transform: translate(90vw, -10vh) scale(0.9) rotate(5deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-200px, 80vh) scale(0.5) rotate(0deg);
+  }
+}
+
+@keyframes silhouetteDance3 {
+  0% {
+    opacity: 0;
+    transform: translate(50vw, 100vh) scale(0.7) rotate(-10deg);
+  }
+  20% {
+    opacity: 0.6;
+    transform: translate(30vw, 20vh) scale(0.8) rotate(15deg);
+  }
+  40% {
+    transform: translate(70vw, 40vh) scale(1) rotate(-5deg);
+  }
+  60% {
+    transform: translate(10vw, 70vh) scale(0.9) rotate(10deg);
+  }
+  80% {
+    transform: translate(80vw, 10vh) scale(1.1) rotate(-20deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(100vw, 90vh) scale(0.7) rotate(0deg);
+  }
+}
+
+/* REALISTIC BUTTERFLIES */
+.butterfly {
+  position: absolute;
+  font-size: 50px;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+  opacity: 0;
+  animation: butterflyEntrance 1s ease-out forwards;
+}
+
+@keyframes butterflyEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Heart animation */
+.heart {
+  position: absolute;
+  font-size: 40px;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 5px 10px rgba(255, 79, 139, 0.4));
+  animation: heartFloat 8s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes heartFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) rotate(360deg);
+  }
+}
+
+/* FINAL LETTER REVEAL */
+#letterContainer {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  animation: fadeInBackground 1.5s ease;
+}
+
+@keyframes fadeInBackground {
+  from { background: rgba(0, 0, 0, 0); }
+  to { background: rgba(0, 0, 0, 0.85); }
+}
+
+.letter {
+  width: 90%;
+  max-width: 800px;
+  background: linear-gradient(to bottom, #fff9f0, #fff5e6);
+  border-radius: 20px;
+  padding: 60px 50px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transform: translateY(100vh) scale(0.8);
+  opacity: 0;
+  border: 2px solid #e6d4b3;
+  overflow: hidden;
+}
+
+.letter.show {
+  animation: letterReveal 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes letterReveal {
+  0% {
+    transform: translateY(100vh) scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-20px) scale(1.02);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(10px) scale(1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.letter:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4, #a1c4fd);
+}
+
+.letter-header {
+  text-align: left;
+  margin-bottom: 40px;
+  border-bottom: 2px dashed #e6d4b3;
+  padding-bottom: 20px;
+}
+
+.letter-header h2 {
+  font-size: 3.2rem;
+  color: #5a2d5c;
+  margin-bottom: 10px;
+  font-family: 'Brush Script MT', cursive;
+}
+
+.letter-header p {
+  font-size: 1.4rem;
+  color: #7a5a7c;
+  font-style: italic;
+}
+
+.letter-content {
+  text-align: left;
+  font-size: 1.8rem;
+  line-height: 1.8;
+  color: #5a2d5c;
+  margin-bottom: 40px;
+}
+
+.letter-signature {
+  text-align: right;
+  margin-top: 50px;
+  font-family: 'Brush Script MT', cursive;
+}
+
+.letter-signature h3 {
+  font-size: 3rem;
+  color: #ff4f8b;
+  margin-bottom: 10px;
+}
+
+.letter-signature p {
+  font-size: 1.6rem;
+  color: #7a5a7c;
+}
+
+.close-letter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ff4f8b;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-letter:hover {
+  background: #ff7eb3;
+  transform: rotate(90deg);
+}
+
+/* Sparkle effect */
+.sparkle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, white, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px 3px white;
+  z-index: 3;
+  pointer-events: none;
+  animation: sparklePop 1.5s ease-out forwards;
+}
+
+@keyframes sparklePop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  #screen1 h1 {
+    font-size: 3rem;
+  }
+  
+  #screen1 p {
+    font-size: 1.3rem;
+  }
+  
+  button {
+    padding: 16px 40px;
+    font-size: 1.3rem;
+  }
+  
+  .line {
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+  
+  #finalLove {
+    font-size: 3rem;
+  }
+  
+  .message-container {
+    padding: 30px;
+    margin: 15px;
+  }
+  
+  .dancing-silhouette {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .letter {
+    padding: 40px 30px;
+  }
+  
+  .letter-header h2 {
+    font-size: 2.5rem;
+  }
+  
+  .letter-content {
+    font-size: 1.5rem;
+  }
+  
+  .letter-signature h3 {
+    font-size: 2.5rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 - WELCOME -->
+<div id="screen1">
+  <h1>🎉 Happy Birthday, My Love! 🎉</h1>
+  <p>
+    Today is your day, my beautiful princess. <br>
+    I've prepared a magical fairytale just for you ✨
+  </p>
+  <p style="font-size: 1.4rem; margin-top: 25px; font-style: italic; color: #ff4f8b;">
+    "In a world full of magic, you're the most enchanting of all."
+  </p>
+  
+  <div class="button-container">
+    <button onclick="startMagicalJourney()">
+      Begin the Magic ✨
+    </button>
+  </div>
+</div>
+
+<!-- SCREEN 2 - MESSAGES -->
+<div id="screen2">
+  <div class="silhouette-container" id="silhouetteContainer"></div>
+  
+  <div class="message-container">
+    <div class="line" id="line1">
+      🌸 You are the reason smiles feel brighter 🌸
+    </div>
+    
+    <div class="line" id="line2">
+      🦋 Your presence makes everything magical 🦋
+    </div>
+    
+    <div class="line" id="line3">
+      💖 You are loved more than words can say 💖
+    </div>
+    
+    <div id="finalLove">
+      Love you always and forever 💖
+    </div>
+  </div>
+</div>
+
+<!-- FINAL LETTER -->
+<div id="letterContainer">
+  <div class="letter" id="birthdayLetter">
+    <button class="close-letter" onclick="closeLetter()">✕</button>
+    
+    <div class="letter-header">
+      <h2>My Dearest Love,</h2>
+      <p>On this special day of yours...</p>
+    </div>
+    
+    <div class="letter-content">
+      <p>Happy Birthday to the most amazing person in my life! 🎂</p>
+      <p>Today, I want you to know how incredibly special you are. You light up every room you walk into, and your smile has the power to brighten even the darkest days.</p>
+      <p>I wish for you endless joy, boundless laughter, dreams that come true, and a year filled with magical moments. May each day bring you closer to your heart's desires.</p>
+      <p>You deserve all the happiness in the world, and I promise to do everything I can to make sure you always feel loved, cherished, and celebrated.</p>
+      <p>Here's to more adventures, more laughter, more love, and more beautiful memories together. I can't wait to see what this new chapter of your life brings!</p>
+    </div>
+    
+    <div class="letter-signature">
+      <h3>Forever Yours,</h3>
+      <p>With all my love and a heart full of wishes for you 💖</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Create initial floating elements on first screen
+for (let i = 0; i < 12; i++) {
+  createButterfly(true);
+  createHeart(true);
+}
+
+function createButterfly(initial = false) {
+  let butterfly = document.createElement("div");
+  butterfly.className = "butterfly";
+  butterfly.innerHTML = "🦋";
+  
+  // Random position
+  let startX, startY;
+  if (initial) {
+    startX = Math.random() * 100;
+    startY = Math.random() * 100;
+  } else {
+    startX = Math.random() * 100;
+    startY = 100; // Start from bottom
+  }
+  
+  butterfly.style.left = startX + "vw";
+  butterfly.style.top = startY + "vh";
+  
+  // Random size
+  let size = 30 + Math.random() * 40;
+  butterfly.style.fontSize = size + "px";
+  
+  // Create unique flight path
+  let animationName = `butterflyFlight-${Math.random().toString(36).substr(2, 9)}`;
+  let keyframes = `
+    @keyframes ${animationName} {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: ${initial ? 1 : 0};
+      }
+      10% {
+        opacity: 1;
+        transform: translate(${Math.random() * 100 - 50}px, -30px) rotate(${Math.random() * 30 - 15}deg);
+      }
+      30% {
+        transform: translate(${Math.random() * 150 - 75}px, -100px) rotate(${Math.random() * 60 - 30}deg);
+      }
+      50% {
+        transform: translate(${Math.random() * 200 - 100}px, -180px) rotate(${Math.random() * 90 - 45}deg);
+      }
+      70% {
+        transform: translate(${Math.random() * 150 - 75}px, -260px) rotate(${Math.random() * 60 - 30}deg);
+      }
+      90% {
+        opacity: 1;
+        transform: translate(${Math.random() * 100 - 50}px, -320px) rotate(${Math.random() * 30 - 15}deg);
+      }
+      100% {
+        opacity: ${initial ? 1 : 0};
+        transform: translate(0, -400px) rotate(0deg);
+      }
+    }
+  `;
+  
+  // Add the keyframes to the document
+  let styleSheet = document.createElement("style");
+  styleSheet.textContent = keyframes;
+  document.head.appendChild(styleSheet);
+  
+  // Apply animation
+  butterfly.style.animation = `butterflyEntrance 1s ease-out forwards, ${animationName} ${12 + Math.random() * 18}s ease-in-out infinite ${Math.random() * 3}s`;
+  
+  document.body.appendChild(butterfly);
+  
+  // Remove butterfly after animation completes (if not initial)
+  if (!initial) {
+    setTimeout(() => {
+      if (butterfly.parentNode) {
+        butterfly.parentNode.removeChild(butterfly);
+      }
+    }, 20000);
+  }
+  
+  return butterfly;
+}
+
+function createHeart(initial = false) {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (25 + Math.random() * 35) + "px";
+  heart.style.animationDuration = (6 + Math.random() * 10) + "s";
+  heart.style.animationDelay = Math.random() * 5 + "s";
+  
+  if (!initial) {
+    heart.style.top = "100vh";
+  } else {
+    heart.style.top = Math.random() * 100 + "vh";
+  }
+  
+  document.body.appendChild(heart);
+  
+  // Remove heart after animation completes (if not initial)
+  if (!initial) {
+    setTimeout(() => {
+      if (heart.parentNode) {
+        heart.parentNode.removeChild(heart);
+      }
+    }, 15000);
+  }
+}
+
+function createSparkle() {
+  let sparkle = document.createElement("div");
+  sparkle.className = "sparkle";
+  sparkle.style.left = Math.random() * 100 + "vw";
+  sparkle.style.top = Math.random() * 100 + "vh";
+  sparkle.style.animationDelay = Math.random() * 2 + "s";
+  document.body.appendChild(sparkle);
+  
+  // Remove sparkle after animation completes
+  setTimeout(() => {
+    if (sparkle.parentNode) {
+      sparkle.parentNode.removeChild(sparkle);
+    }
+  }, 1500);
+}
+
+function createDancingSilhouette() {
+  let silhouette = document.createElement("div");
+  silhouette.className = "dancing-silhouette";
+  
+  // Choose random animation
+  const animations = ['silhouetteDance', 'silhouetteDance2', 'silhouetteDance3'];
+  const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+  
+  // Random position
+  silhouette.style.left = Math.random() * 100 + "vw";
+  silhouette.style.top = Math.random() * 100 + "vh";
+  
+  // Random size
+  let scale = 0.5 + Math.random() * 0.8;
+  silhouette.style.transform = `scale(${scale})`;
+  
+  // Random opacity
+  let opacity = 0.6 + Math.random() * 0.3;
+  silhouette.style.opacity = opacity;
+  
+  // Apply animation
+  silhouette.style.animation = `${randomAnimation} ${20 + Math.random() * 15}s ease-in-out infinite`;
+  silhouette.style.animationDelay = Math.random() * 10 + "s";
+  
+  document.getElementById("silhouetteContainer").appendChild(silhouette);
+  
+  // Remove silhouette after animation completes
+  setTimeout(() => {
+    if (silhouette.parentNode) {
+      silhouette.parentNode.removeChild(silhouette);
+    }
+  }, 35000);
+}
+
+function startMagicalJourney() {
+  // Hide first screen with fade out
+  document.getElementById("screen1").style.opacity = "0";
+  document.getElementById("screen1").style.transform = "scale(0.9)";
+  document.getElementById("screen1").style.transition = "all 0.8s ease";
+  setTimeout(() => {
+    document.getElementById("screen1").style.display = "none";
+  }, 800);
+  
+  // Show second screen with fade in
+  document.getElementById("screen2").style.display = "flex";
+  document.getElementById("screen2").style.opacity = "0";
+  
+  setTimeout(() => {
+    document.getElementById("screen2").style.opacity = "1";
+    document.getElementById("screen2").style.transition = "opacity 1.5s ease";
+  }, 100);
+  
+  // Create multiple dancing silhouettes
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      createDancingSilhouette();
+    }, i * 3000);
+  }
+  
+  // Create realistic butterflies
+  for (let i = 0; i < 25; i++) {
+    setTimeout(() => {
+      createButterfly();
+    }, i * 600);
+  }
+  
+  // Create hearts
+  for (let i = 0; i < 18; i++) {
+    setTimeout(() => {
+      createHeart();
+    }, i * 900);
+  }
+  
+  // Create sparkles
+  for (let i = 0; i < 50; i++) {
+    setTimeout(() => {
+      createSparkle();
+    }, i * 150);
+  }
+  
+  // Show messages with smooth delay
+  setTimeout(() => {
+    document.getElementById("line1").classList.add("show");
+  }, 2000);
+  
+  setTimeout(() => {
+    document.getElementById("line2").classList.add("show");
+  }, 4500);
+  
+  setTimeout(() => {
+    document.getElementById("line3").classList.add("show");
+  }, 7000);
+  
+  setTimeout(() => {
+    document.getElementById("finalLove").classList.add("show");
+    
+    // Extra sparkles when final message appears
+    for (let i = 0; i < 30; i++) {
+      setTimeout(() => createSparkle(), i * 120);
+    }
+    
+    // Show letter after a delay
+    setTimeout(() => {
+      showBirthdayLetter();
+    }, 5000);
+    
+  }, 9500);
+  
+  // Continue creating silhouettes periodically
+  setInterval(() => {
+    createDancingSilhouette();
+  }, 8000);
+  
+  // Continue creating butterflies
+  setInterval(() => {
+    createButterfly();
+  }, 2500);
+  
+  // Continue creating hearts
+  setInterval(() => {
+    createHeart();
+  }, 3500);
+  
+  // Continue creating sparkles
+  setInterval(() => {
+    createSparkle();
+  }, 400);
+}
+
+function showBirthdayLetter() {
+  // Hide message screen
+  document.getElementById("screen2").style.opacity = "0";
+  document.getElementById("screen2").style.transition = "opacity 1s ease";
+  setTimeout(() => {
+    document.getElementById("screen2").style.display = "none";
+  }, 1000);
+  
+  // Show letter container
+  document.getElementById("letterContainer").style.display = "flex";
+  
+  // Animate letter entrance
+  setTimeout(() => {
+    document.getElementById("birthdayLetter").classList.add("show");
+  }, 300);
+  
+  // Add special butterflies around the letter
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
+      let butterfly = createButterfly();
+      butterfly.style.zIndex = "210";
+      butterfly.style.fontSize = "30px";
+      butterfly.style.opacity = "0.8";
+    }, i * 500);
+  }
+}
+
+function closeLetter() {
+  // Animate letter closing
+  document.getElementById("birthdayLetter").classList.remove("show");
+  document.getElementById("birthdayLetter").style.transform = "translateY(100vh) scale(0.8)";
+  document.getElementById("birthdayLetter").style.opacity = "0";
+  document.getElementById("birthdayLetter").style.transition = "all 1.5s ease";
+  
+  // Hide letter container after animation
+  setTimeout(() => {
+    document.getElementById("letterContainer").style.display = "none";
+    
+    // Show message screen again
+    document.getElementById("screen2").style.display = "flex";
+    setTimeout(() => {
+      document.getElementById("screen2").style.opacity = "1";
+    }, 100);
+  }, 1500);
+}
+
+// Add some floating elements on load
+window.addEventListener('load', function() {
+  // Create initial butterflies
+  for (let i = 0; i < 15; i++) {
+    setTimeout(() => createButterfly(true), i * 400);
+  }
+  
+  // Create initial hearts
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => createHeart(true), i * 600);
+  }
+  
+  // Create initial sparkles
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => createSparkle(), i * 300);
+  }
+});
+</script>
+
+</body>
+</html>
